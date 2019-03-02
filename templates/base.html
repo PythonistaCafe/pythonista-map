@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pythonistacafe world map - {% block title%} "main" {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Pythonistacafe world map</h1>
+    <table>
+        <tr>
+            <td>
+                <form method="post">
+                    <label for="location">New location</label>
+                    <input title="type city and country" name="location" id="location" required>
+                    <input type="submit" value="Add location">
+                </form>
+            </td>
+            <td style="vertical-align:top">
+                {% for message in get_flashed_messages() %}
+                    <p class="flash">{{ message }}</p>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+    {% autoescape on %}
+        {{ map_ }}
+    {% endautoescape %}
+
+</body>
+</html>
